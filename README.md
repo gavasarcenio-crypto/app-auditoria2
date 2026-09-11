@@ -24,7 +24,7 @@ local para consulta offline.
 ## Como rodar
 
 ```bash
-git clone "link do repositorio"
+git clone https://github.com/gavasarcenio-crypto/app-auditoria2.git
 cd app-auditoria
 npx expo install expo-image-picker expo-location expo-contacts expo-sensors expo-status-bar
 npx expo install @react-native-async-storage/async-storage
