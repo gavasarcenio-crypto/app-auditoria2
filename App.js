@@ -1,20 +1,41 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import RegistroVisitaScreen from './src/screens/RegistroVisitaScreen';
+import HistoricoScreen from './src/screens/HistoricoScreen';
+import { cores } from './src/styles/globalStyles';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar style="light" />
+        <Stack.Navigator
+          initialRouteName="Registro"
+          screenOptions={{
+            headerStyle: { backgroundColor: cores.primariaEscura },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: { fontWeight: '700' },
+            contentStyle: { backgroundColor: cores.fundo },
+          }}
+        >
+          <Stack.Screen
+            name="Registro"
+            component={RegistroVisitaScreen}
+            options={{ title: 'Visita técnica' }}
+          />
+          <Stack.Screen
+            name="Historico"
+            component={HistoricoScreen}
+            options={{ title: 'Histórico local' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
